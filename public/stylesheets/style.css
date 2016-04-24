@@ -1,0 +1,14 @@
+body {
+    padding-top: 48px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+    color: #00B7FF;
+}
+
+.jumbotron {
+    background-color: #4393b9;
+    color: #fff;
+    width: 100%;
+}
