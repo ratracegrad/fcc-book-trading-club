@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+    <% include ./partials/header %>
+
+    <body class="loginLogout">
+
+        <% include ./partials/navigation %>
+
+        <div class="container">
+            <div class="col-xs-12">
+                <form id="updateProfile">
+                    <h1 class="title">Update Profile</h1>
+                    <div class="form-group">
+                        <label for="city">City</label>
+                        <input type="text" name="city" id="city" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="state">State</label>
+                        <input type="text" name="state" id="state" class="form-control">
+                    </div>
+                    <button class="btn btn-warning btn-lg" id="updateProfileButton" onclick="updateProfile()">Save Changes</button>
+                </form>
+
+                <form id="changePassword">
+                    <h1 class="title">Change Password</h1>
+                    <div class="form-group">
+                        <label for="currentPassword">Current Password</label>
+                        <input type="password" name="currentPassword" id="currentPassword" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="newPassword">New Password</label>
+                        <input type="password" name="newPassword" id="newPassword" class="form-control">
+                    </div>
+                    <button class="btn btn-warning btn-lg" id="changePasswordButton" onclick="changePassword()">Save Changes</button>
+                </form>
+            </div>
+        </div>
+
+        <% include ./partials/footer %>
+
+        <% include ./partials/scripts %>
+
+        <script>
+            $('#updateProfileButton').on('click', function() {
+                alert('clicked update profile button');
+            });
+
+            $('#hangePasswordButton').on('click', function() {
+                alert('clicked change password button');
+            });
+        </script>
+    </body>
+</html>

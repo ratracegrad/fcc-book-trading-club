@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+    <% include ./partials/header %>
+
+    <body>
+        <% include ./partials/navigation %>
+
+        <div class="container">
+            <div class="col-xs-12">
+                <div >
+                    <h1 class="title">All Books</h1>
+                    <hr>
+                    <br />
+                    <% for (var i = 0; i < books.length; i++) { %>
+                    <div class="bookThumbnail">
+                        <img src="<%= books[i].thumbnail%>" />
+                    </div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+
+        <% include ./partials/footer %>
+
+        <% include ./partials/scripts %>
+
+    </body>
+</html>

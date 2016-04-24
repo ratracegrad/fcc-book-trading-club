@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+    <% include ./partials/header %>
+
+    <body>
+        <% include ./partials/navigation %>
+
+        <div class="container">
+            <div class="col-xs-12">
+                <div >
+                    <h1 class="title">My Books</h1>
+                    <form class="form-inline" method="POST" action="/mybooks">
+                        <div class="form-group">
+                            <input type="text" id="title" name="title" required>
+                        </div>
+                        <button class="btn btn-warning">Add</button>
+                    </form>
+                    <hr>
+                    <br />
+                    <% for (var i = 0; i < books.length; i++) { %>
+                        <div class="bookThumbnail">
+                            <img src="<%= books[i].thumbnail%>" />
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+
+        <% include ./partials/footer %>
+
+        <% include ./partials/scripts %>
+
+    </body>
+</html>

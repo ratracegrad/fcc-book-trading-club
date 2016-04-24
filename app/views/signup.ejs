@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+    <% include ./partials/header %>
+
+    <body class="loginLogout">
+
+        <% include ./partials/navigation %>
+
+        <div class="container">
+            <div class="col-xs-12 col-md-4 col-md-offset-4">
+                <div class="formContainer">
+                    <h1 class="text-center title">SIGNUP</h1>
+
+                    <!-- show any messages that come back with authentication -->
+                    <% if (message.length > 0) { %>
+                        <div class="alert alert-danger"><%= message %></div>
+                    <% } %>
+
+                    <form method="POST" action="/signup">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" name="name" id="name" placeholder="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" name="email" id="email" placeholder="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" name="password" id="password" placeholder="password" required>
+                        </div>
+                        <button class="btn btn-warning btn-block">Signup</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    <% include ./partials/footer %>
+
+    <% include ./partials/scripts %>
+
+    </body>
+</html>
