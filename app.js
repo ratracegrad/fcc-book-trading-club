@@ -11,7 +11,7 @@ var session = require('express-session');
 var flash = require('connect-flash');
 var mongoose = require('mongoose');
 var port = process.env.PORT || 3000;
-var dbURI = process.env.MONGODB || 'mongodb://localhost:27017/bookclub';
+var dbURI = process.env.MONGODB || process.env.MONGODB_URI || 'mongodb://localhost:27017/bookclub';
 
 //var routes = require('./app/routes/index');
 
