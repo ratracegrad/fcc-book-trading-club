@@ -5,7 +5,8 @@ html {
 
 body {
     padding-top: 48px;
-    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-family: "Open Sans", sans-serif;
     margin-bottom: 60px;
 }
 
@@ -14,7 +15,7 @@ a {
 }
 
 .jumbotron {
-    background-color: #4393b9;
+    background-color: #2a9fe4;
     color: #fff;
     width: 100%;
 }
@@ -23,10 +24,41 @@ a {
     position: absolute;
     bottom: 0;
     width: 100%;
-    background-color: #4393b9;
+    background-color: #2f4f4f;
     color: #fff;
     line-height: 60px;
 }
 .footer a {
     color: #fff;
+}
+
+.loginLogout {
+    background-image: url('/public/images/bg-pattern.png') !important;
+    background-repeat: repeat;
+}
+
+.formContainer {
+    border-radius: 8px;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0px 0px 8px #bbb;
+    padding: 15px 20px 30px;
+    margin-top: 50px;
+}
+
+.title {
+    font-weight: bold;
+    color: #008aa2;
+}
+
+label {
+    color: #626b80;
+}
+
+.bookThumbnail {
+    display: inline-block;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 5px;
+    margin: 10px;
 }
