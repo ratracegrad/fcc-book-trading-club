@@ -10,98 +10,39 @@ var passport = require('passport');
 var session = require('express-session');
 var flash = require('connect-flash');
 var mongoose = require('mongoose');
-var port = process.env.PORT || 3000;
-var dbURI = process.env.MONGODB || process.env.MONGODB_URI || 'mongodb://localhost:27017/bookclub';
 
-//var routes = require('./app/routes/index');
 
-mongoose.connect(dbURI);
+var app = express();
 
-// If the connection throws an error
-mongoose.connection.on('error',function (err) {
-    console.log('Mongoose default connection error: ' + err);
-});
+require('./app/config/passport')(passport);
 
-// When the connection is disconnected
-mongoose.connection.on('disconnected', function () {
-    console.log('Mongoose default connection disconnected');
-});
-
-// If the Node process ends, close the Mongoose connection
-process.on('SIGINT', function() {
-    mongoose.connection.close(function () {
-        console.log('Mongoose default connection disconnected through app termination');
-        process.exit(0);
-    });
-});
-
-// If can connect to database then start server
-mongoose.connection.on('connected', function() {
-    console.log('Mongoose default connection open to ' + dbURI);
-
-    var app = express();
-
-    require('./app/config/passport')(passport);
-
-    app.use(favicon(path.join(__dirname, 'public', 'favicon.png')));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.png')));
+if (process.env.NODE_ENV !== 'test') {
     app.use(logger('dev'));
-    app.use(bodyParser.json());
-    app.use(bodyParser.urlencoded({ extended: false }));
-    app.use(cookieParser());
-    app.use('/public', express.static('public'));
+}
 
-    // view engine setup
-    app.set('views', path.join(__dirname, 'app/views'));
-    app.set('view engine', 'ejs');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use('/public', express.static('public'));
 
-    /**
-     * Passport configurations
-     */
-    app.use(session({
-                        secret: 'fccbooktradingclubsecret',
-                        resave: false,
-                        saveUninitialized: true
-                    }));
-    app.use(passport.initialize());
-    app.use(passport.session());
-    app.use(flash());
+// view engine setup
+app.set('views', path.join(__dirname, 'app/views'));
+app.set('view engine', 'ejs');
 
-    require('./app/routes/index')(app,passport);
+/**
+ * Passport configurations
+ */
+app.use(session({
+                    secret: 'fccbooktradingclubsecret',
+                    resave: false,
+                    saveUninitialized: true
+                }));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
 
-    // catch 404 and forward to error handler
-    app.use(function(req, res, next) {
-        var err = new Error('Not Found');
-        err.status = 404;
-        next(err);
-    });
+require('./app/routes/index')(app,passport);
 
-    // error handlers
+module.exports = app;
 
-    // development error handler
-    // will print stacktrace
-    if (app.get('env') === 'development') {
-        app.use(function(err, req, res, next) {
-            res.status(err.status || 500);
-            res.render('error', {
-                message: err.message,
-                error: err
-            });
-        });
-    }
-
-    // production error handler
-    // no stacktraces leaked to user
-    app.use(function(err, req, res, next) {
-        res.status(err.status || 500);
-        res.render('error', {
-            message: err.message,
-            error: {}
-        });
-    });
-
-
-    app.listen(port, function() {
-        console.log('Server listening on port ' + port + '...')
-    })
-
-});
