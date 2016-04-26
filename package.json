@@ -4,7 +4,8 @@
   "private": true,
   "author": "Jennifer Bland",
   "scripts": {
-    "start": "node app"
+    "start": "node server",
+    "test": "mocha test"
   },
   "dependencies": {
     "bcrypt": "^0.8.6",
@@ -22,5 +23,11 @@
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "serve-favicon": "~2.3.0"
+  },
+  "devDependencies": {
+    "mocha": "^2.4.5",
+    "request": "^2.72.0",
+    "should": "^8.3.1",
+    "supertest": "^1.2.0"
   }
 }
