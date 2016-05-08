@@ -62,8 +62,9 @@ mongoose.connection.on('connected', function() {
         });
     });
 
+    app.listen(port, function() {
+        console.log('Server listening on port ' + port + '...')
+    });
+
 });
 
-app.listen(port, function() {
-    console.log('Server listening on port ' + port + '...')
-});
